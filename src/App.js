@@ -12,6 +12,19 @@ import StudentTestimonials from './Pages/Studnet Testimonials';
 import Blog from './Pages/Blog';
 import Events from './Pages/Events';
 import Webinar from './Pages/Webinar';
+import BusinessAnalytics from './component/courses/BusinessAnalytics';
+import BusinessStudies from './component/courses/Course Page/BusinessStudies';
+import ArchitectureAndBuilding from './component/courses/Course Page/ArchitectureAndBuilding';
+import Engineering from './component/courses/Course Page/Engineering';
+import FandHospitality from './component/courses/Course Page/Food&Hospitality';
+import HandAHealth from './component/courses/Course Page/Health&AlliedHealth';
+import HandSScience from './component/courses/Course Page/HumanitiesAndSocialScience';
+import InformationTechnology from './component/courses/Course Page/InformationTechnology';
+import Science from './component/courses/Course Page/Science';
+import ArtDesign from './component/courses/Course Page/artDesign';
+import Law from './component/courses/Course Page/law';
+import Education from './component/courses/Course Page/Education';
+import Nursing from './component/courses/component/mainpage/nursing';
 
 
 function App() {
@@ -34,6 +47,19 @@ function App() {
       <Route exact path='/Blog' component={Blog} />
       <Route exact path='/Events' component={Events} />
       <Route exact path='/Webinar' component={Webinar} />
+      <Route exact path='/BusinessAnalytics' component={BusinessAnalytics} />
+      <Route exact path='/Business Studies' component={BusinessStudies} />
+      <Route exact path='/Architecture & Building' component={ArchitectureAndBuilding} />
+      <Route exact path='/Creative Arts, Design & Communication' component={ArtDesign} />
+      <Route exact path='/Education' component={Education} />
+      <Route exact path='/Engineering' component={Engineering} />
+      <Route exact path='/Food & Hospitality' component={FandHospitality} />
+      <Route exact path='/Humanities & Social Sciences' component={HandSScience} />
+      <Route exact path='/Health & Allied Health' component={HandAHealth} />
+      <Route exact path='/Information Technology' component={InformationTechnology} />
+      <Route exact path='/Law' component={Law} />
+      <Route exact path='/Sciences' component={Science} />
+      <Route exact path='/Nursing' component={Nursing} />
       </Switch> 
       </BrowserRouter>
     </div>

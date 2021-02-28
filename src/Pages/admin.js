@@ -9,7 +9,7 @@ import Fade from "@material-ui/core/Fade";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 //import DeleteFunction from '../database/deleteData.php';
-
+import DeleteIcon from "@material-ui/icons/Delete";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -20,6 +20,8 @@ import { Container, Grid, Grow } from "@material-ui/core";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Page from "./pages";
 import Paper from "@material-ui/core/Paper";
+import ButtonDelete from "../component/button";
+import EnquiryList from "../component/Admin/enquiryList";
 
 function SlideTransition(props) {
   return <Slide {...props} direction="up" />;
@@ -28,7 +30,8 @@ function SlideTransition(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      width: "100%",
+      width: "auto",
+      height: "auto",
       height: theme.spacing(16),
     },
     close: {
@@ -36,11 +39,8 @@ const useStyles = makeStyles((theme) => ({
     },
     flexGrow: 1,
     width: "auto",
-    backgroundColor: theme.palette.background.paper,
   },
-  form: {
-    marginLeft: "auto",
-  },
+  form: {},
 
   list: {
     height: "100%",
@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     height: 300,
     width: "100%",
+    height: "auto",
   },
   golden: {
     color: "rgb(205, 112, 0)",
@@ -69,12 +70,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   paper1: {
+    width: "auto",
+    padding: theme.spacing(1),
+    justifyContent: "center",
+    alignItems: "center",
     height: "auto",
-    padding: theme.spacing(2),
+    display: "flex",
+    flexDirection: "row",
     margin: 25,
     marginTop: 150,
     width: "auto",
-    backgroundColor: theme.palette.background.paper,
   },
 }));
 
@@ -150,10 +155,6 @@ export default function Admin() {
     }
   };
 
-  const deleteEnquiry = (id) => {
-    console.log(id);
-  };
-
   const handleClose = () => {
     setState({
       ...state,
@@ -163,7 +164,7 @@ export default function Admin() {
   return (
     <div className={classes.root}>
       <Paper elevation={5} className={classes.paper1}>
-        <form className={classes.form} Validate autoComplete="off">
+        <form Validate autoComplete="off">
           <TextField
             id="outlined-basic"
             label="Title"
@@ -205,6 +206,27 @@ export default function Admin() {
           </Button>
         </form>
       </Paper>
+      <Paper elevation={5} className={classes.paper1}>
+        <EnquiryList />
+      </Paper>
+
+      <Page
+        Title={"Welcome To Admin Page"}
+        image1={"https://i.redd.it/1vemqfhuf9u41.jpg"}
+        pT2={
+          "Don’t leave your options to chance, speak with the AECC Global experts before you make a big decision"
+        }
+        p2={
+          "As an international student, choosing the right course of study for you in Australia is an important decision. It’s not only money, it’s also time that you can’t get back if you choose a course or institution here that doesn’t meet your study or long term career objectives. Talking with an Education Counsellor from AECC Global can help. You can tell us your career goals and we’ll give you expert guidance on the study choices that will get you there. We can help, whichever stage you’re at: Considering university or further courses of education in Australia? Want to know about different institutions in Australia and how they compare so you can make a good choice? Need assistance with student visa? It doesn’t matter, if you’ve studied before or not, we can help international students at every level, from university preparation courses right through to PhD and Master’s level research."
+        }
+        image2={
+          "https://ih0.redbubble.net/image.8712023.7976/flat,1000x1000,075,f.jpg"
+        }
+        pT3={"Seek advice from an education industry-leader"}
+        p3={
+          "With almost 10 years’ experience and a wonderful team of QEAC Certified Education Counsellors, AECC Global can give you all the guidance and services you need to study in Australia. From course selection and managing your study application to visa advice and application services through our in-house migration agents to extensive support for health cover, taxation, accommodation and more, we are here for international students. We will start with learning about you and your goals, then our friendly Education Counsellors will help you find a fantastic course at an institution that gets you where you want to go. We’ll help arrange everything, from your course application to offer letter and study visa. We will also guide you on accommodation health cover and insurance. We will also search for applicable financial assistance and scholarships you could get. We know that leaving your home country to study overseas is an exciting journey – and we’ll be with you the whole way whenever you need advice or assistance throughout your stay in Australia."
+        }
+      />
 
       <Snackbar
         open={state.open}
@@ -223,84 +245,6 @@ export default function Admin() {
           </IconButton>
         }
       />
-      <div>
-        <h1 style={{ textAlign: "center" }}>
-          Our <span className={classes.golden}>Enquiry List </span>
-        </h1>
-        {loading ? (
-          <LinearProgress />
-        ) : enquiryData.data.length === 0 ? (
-          <div>Error: There are no products in DB"</div>
-        ) : (
-          <div>
-            <Container>
-              <Grow in>
-                <Grid container spacing={5} padding={10}>
-                  {enquiryData.data.map((value, index) => (
-                    <Paper elevation={5} className={classes.paper}>
-                      <Card key={index.ID}>
-                        <CardActionArea key={index.ID}>
-                          <CardContent key={index.ID}>
-                            <Typography
-                              gutterBottom
-                              variant="h6"
-                              component="h2"
-                            >
-                              <p>
-                                {" "}
-                                <b>Full Name:</b> {value.FullName}
-                              </p>
-                            </Typography>
-                            <Typography variant="h6" component="h5">
-                              <p>
-                                {" "}
-                                <b>Email:</b> {value.Email}
-                              </p>
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="p"
-                            >
-                              <p>
-                                {" "}
-                                <b>Message:</b> {value.Message}{" "}
-                              </p>
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="h5"
-                            >
-                              <p>
-                                {" "}
-                                <b>Date:</b> {value.Date}{" "}
-                              </p>
-                              <br></br>
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                        <CardActions key={index.ID}>
-                          <Button
-                            variant="outlined"
-                            size="small"
-                            color="primary"
-                          >
-                            Delete
-                          </Button>
-                        </CardActions>
-                      </Card>
-                    </Paper>
-                  ))}
-                </Grid>
-              </Grow>
-            </Container>
-            <div>
-              <Page p1={"This is Admin P1"} p2={"This is Admin P2"} />
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   );
 }

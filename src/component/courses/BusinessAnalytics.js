@@ -1,11 +1,11 @@
 import React from 'react';
-import Page from './pages';
-
-export default function sTestimonials(){
+import Page from '../../Pages/pages';
+import Accordion from '../courses/component/Accordion';
+export default function eventsPage(){
 return(
     <div>
         <Page 
-        Title={'Welcome To Student Testimoials'} 
+        Title={'Study Master of Business Analytics Course in Australia'} 
         image1={"https://i.redd.it/1vemqfhuf9u41.jpg"}
           pT2={
             "Don’t leave your options to chance, speak with the AECC Global experts before you make a big decision"
@@ -21,6 +21,8 @@ return(
             "With almost 10 years’ experience and a wonderful team of QEAC Certified Education Counsellors, AECC Global can give you all the guidance and services you need to study in Australia. From course selection and managing your study application to visa advice and application services through our in-house migration agents to extensive support for health cover, taxation, accommodation and more, we are here for international students. We will start with learning about you and your goals, then our friendly Education Counsellors will help you find a fantastic course at an institution that gets you where you want to go. We’ll help arrange everything, from your course application to offer letter and study visa. We will also guide you on accommodation health cover and insurance. We will also search for applicable financial assistance and scholarships you could get. We know that leaving your home country to study overseas is an exciting journey – and we’ll be with you the whole way whenever you need advice or assistance throughout your stay in Australia."
           }
           />
-    </div>
+          <Accordion />
+
+   </div>
 )
 }

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'react-image-file';
 import Axios from 'axios';
 import Paper from "@material-ui/core/Paper";
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme)=>({
@@ -69,7 +70,7 @@ useEffect(()=>{
     <div className={classes.contentData}>
       <Paper elevation={5} className={classes.paper}>
       <Typography gutterBottom variant="h6" component="h1" style={{ textAlign: "center" }}>
-                   <b> How (this company) can help People.</b><br></br>
+                   <b> How Rodger Educational Services can help students.</b><br></br>
                     FInd out more about our company services, and other provided facilities.
                     
       </Typography>
@@ -101,10 +102,11 @@ useEffect(()=>{
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                
+                <Link to ={value.Title}>
                 <Button size="small" color="primary">
                   Learn More
                 </Button>
+                </Link>
               </CardActions>
               
             </Card>

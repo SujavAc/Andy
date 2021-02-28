@@ -5,7 +5,7 @@ $status = $statusMsg = '';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-$ID = $_POST['enquiryID'];
+$ID = $_POST['ID'];
 $result = $conn->query("DELETE FROM `enquiry` WHERE ID = $ID"); 
 if($result){
     $status='Deleted Successfully';

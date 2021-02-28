@@ -12,14 +12,21 @@ import Axios from 'axios';
     root: {
       '& > *': {
         margin: theme.spacing(1),
-        width: '40ch',
+        width: '35ch',
       },
       close: {
         padding: theme.spacing(0.5),
       },
+      justifyContent: "center",
+    alignItems: "center",
+    height: "auto",
+    display: "flex",
+    flexDirection: "column",
     },
     message:{
       margin: theme.spacing(5),
+      justifyContent:'center',
+      alignItems:'center',
       
     },
     error:{
@@ -33,24 +40,24 @@ import Axios from 'axios';
     
     
   }));
-  const theme = createMuiTheme({
-    overrides: {
-      // Style sheet name ⚛️
-      MuiButton: {
-        // Name of the rule
+  // const theme = createMuiTheme({
+  //   overrides: {
+  //     // Style sheet name ⚛️
+  //     MuiButton: {
+  //       // Name of the rule
         
-        text: {
-          // Some CSS
-          background: 'linear-gradient(45deg, #304ffe 30%, #26c6da 90%)',
-          borderRadius: 3,
-          border: 0,
-          color: '#fafafa',
-          height: 48,
-          padding: '0 30px',
-        },
-      },
-    },
-  });
+  //       text: {
+  //         // Some CSS
+  //         background: 'linear-gradient(45deg, #304ffe 30%, #26c6da 90%)',
+  //         borderRadius: 3,
+  //         border: 0,
+  //         color: '#fafafa',
+  //         height: 48,
+  //         padding: '0 30px',
+  //       },
+  //     },
+  //   },
+  // });
 
 function SimpleDialog(props) {
   const { onClose, selectedValue, open } = props;
@@ -95,7 +102,8 @@ function SimpleDialog(props) {
         setMsg({
           errMessage:err.message
         });
-      })
+      });
+     
       
 
   
@@ -114,7 +122,7 @@ function SimpleDialog(props) {
       <DialogTitle id="simple-dialog-title">Send Enquiry</DialogTitle>
       
       <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="outlined-basic" label="Full Name" variant="outlined" 
+            <TextField id="outlined-basic" label="Full Name" variant="outlined"
             onChange={event=>{
                 const name = event.target.value;
                 setData(prevSetData=>({
@@ -144,12 +152,12 @@ function SimpleDialog(props) {
                 }))}}
             />
             <br></br>
-          <ThemeProvider theme={theme}>   
-        <Button  onClick={handleClick} >
+             
+        <Button color="primary" onClick={handleClick} >
         Submit
       </Button>
-      </ThemeProvider>
-      </form>
+      
+      
       <div className={classes.message}>
       {msg.errMessage ?(
         <div className={classes.error}>{msg.errMessage}</div>
@@ -157,7 +165,7 @@ function SimpleDialog(props) {
         <div className={classes.success}>{msg.successMsg}</div>
       )}
       </div>
-      
+      </form>
     </Dialog>
   );
 }
@@ -190,11 +198,11 @@ export default function SimpleDialogDemo() {
 
   return (
     <div>
-      <ThemeProvider theme={theme}>
-      <Button onClick={handleClickOpen}>
+      
+      <Button color="primary" onClick={handleClickOpen}>
         Send Enquiry
       </Button>
-      </ThemeProvider>
+      
       <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
       
     </div>

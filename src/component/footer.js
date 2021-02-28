@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     height: "auto",
     padding: theme.spacing(2),
-    margin: 25,
+    
     width: "auto",
     background: "linear-gradient(180deg, #fafafa 30%, #26c6da 90%)",
 

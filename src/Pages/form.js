@@ -47,12 +47,18 @@ const question = [
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
-      width: "45ch",
+      margin: theme.spacing(2),
+      width: "30ch",
     },
     close: {
       padding: theme.spacing(0.5),
     },
+    justifyContent: "center",
+    alignItems: "center",
+    height: "auto",
+    display: "flex",
+    flexDirection: "column",
+    margin: theme.spacing(4),
   },
   error: {
     color: "#ff0000",
@@ -186,7 +192,7 @@ function DialogForm(props) {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      <DialogTitle id="simple-dialog-title">Seek help with experts</DialogTitle>
+      <DialogTitle id="simple-dialog-title" >Seek help with experts</DialogTitle>
 
       <form className={classes.root} noValidate>
         <ValidationTextField

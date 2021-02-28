@@ -19,11 +19,13 @@ const useStyles = makeStyles((theme) => ({
     
   },
   gridList: {
+    display:'flex',
     flexWrap: "nowrap",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: "translateZ(7)",
+    transform: "translateZ(1)",
     cellHeight:'auto',
-    padding:theme.spacing(4),
+    cellWidth:'auto',
+    padding:theme.spacing(1),
   },
   title: {
     color: theme.palette.secondary.light,
@@ -40,10 +42,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     display: "flex",
     flexDirection: "rows",
-    justifyContent: 'center',
-    "& > *": {
-      margin: theme.spacing(1),
-    },
+    justifyContent: 'space-between',
     padding:7,
   },
   large: {
@@ -53,11 +52,10 @@ const useStyles = makeStyles((theme) => ({
   rating: {
     height: "auto",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "rows",
     justifyContent: 'space-between',
-    "& > * + *": {
-      marginTop: theme.spacing(1),
-    },
+    paddingTop:theme.spacing(2),
+    
   },
 }));
 
@@ -109,15 +107,7 @@ export default function SingleLineGridList() {
                 title: classes.title,
               }}
               
-              actionIcon={
-                <IconButton
-                  actionPosition="right"
-                  aria-label={`star ${value.FullName}`}
-                  
-                >
-                    {value.FullName}
-                </IconButton>
-              }
+              
             />
           </GridListTile>
         ))}
