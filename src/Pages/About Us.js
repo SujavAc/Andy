@@ -9,9 +9,8 @@ import EnquiryForm from "../component/enquiryform";
 import Footer from "../component/footer";
 import Form from '../component/Form/openform';
 import FeedBack from '../component/feedback';
-import Expert from '../image/expertadvice.jpg';
+import Expert from '../image/advice.jpg';
 import Whoarewe from '../image/who_are_we.jpg';
-import Banner from '../component/topBanner';
 
 const img = 'https://kapost-files-prod.s3.amazonaws.com/uploads/direct/1494431994-129-1631/3.BikeMonth.gif';
 
@@ -23,28 +22,22 @@ const useStyles = makeStyles((theme) => ({
     },
     flexGrow: 1,
     width: "auto",
+    paddingTop:theme.spacing(10),
     
   },
   paper: {
-    // display:'flex',
-    // displayDirection:'rows',
+    display:'flex',
     height: "auto",
     padding: theme.spacing(4),
     margin: 25,
     width: "auto",
     background: 'linear-gradient(170deg, #fff3e0 30%, #26c6da 90%)',
-    
+    [theme.breakpoints.up("sm")]: {
+     display:'flex',
+     
+    },
   },
-  banner: {
-    height: "100vh",
-    width: "auto",
-    backgroundImage: "url(" + Whoarewe + ")",
-    backgroundSize: "cover",
-    // position: "absolute",
-    // left: "50%",
-    // top: "50%",
-    // transform: "translate(-50%, -50%)",
-  },
+  
   form: {
     height: "auto",
     padding: theme.spacing(4),
@@ -65,11 +58,9 @@ export default function AboutUs() {
   return (
     <div className={classes.root}>
       <NavBarApp />
-      <div className={classes.banner}>
-      <Banner Title={'About Us'} />
-        </div>
+      
       <Paper elevation={5} className={classes.paper}>
-        <img style ={{height:'200px',width:'300px'}} src={Whoarewe}/>
+        <img style ={{height:'50%',width:'50%'}} src={Whoarewe}/>
         <Typography
           variant="body2"
           gutterBottom
@@ -86,11 +77,6 @@ export default function AboutUs() {
         </Typography>
       </Paper>
       
-      <Paper elevation={5} className={classes.paper}>
-        <Typography variant="body2" gutterBottom>
-          Another one content with information about company
-        </Typography>
-      </Paper>
       <Paper elevation={5} className={classes.paper}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm container>
@@ -131,9 +117,10 @@ export default function AboutUs() {
       <Paper elevation={5} className={classes.paper}>
         <Map />
       </Paper>
-      <div style={{width:'auto',height:'auto'}}>
+      <Paper elevation={5} className={classes.paper}>
       <FeedBack />
-      </div>
+      </Paper>
+     
       
       
       

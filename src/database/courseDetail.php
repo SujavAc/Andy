@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 
 
 
-$result = $conn->query("SELECT * FROM `coursedetail` WHERE Title='".$_POST['Title']."'"); 
+$result = $conn->query("SELECT * FROM `andy` WHERE Title='".$_POST['Title']."'"); 
 ?>
 
 <?php if($result->num_rows > 0){ ?> 
@@ -19,14 +19,12 @@ $result = $conn->query("SELECT * FROM `coursedetail` WHERE Title='".$_POST['Titl
         <?php
          $names[] = array(
             'ID'=> $row['ID'],
+            'Picture'=>base64_encode($row['Picture']),
             'Title'=>$row['Title'],
             'Description'=>$row['Description'],
-            'Feestructure'=>$row['Feestructure'],
+            'Details'=>$row['Details'],
             
-            'CourseDuration'=>$row['CourseDuration'],
-            'PRPathway'=>$row['PRPathway'],
-            'Level'=>$row['Level'],
-            'Carrerpathway'=>$row['Carrerpathway'],
+            
         
         );
         

@@ -181,7 +181,7 @@ export default function HalfRating() {
         />
         
       </div>
-      <Button onClick={handleOpen.bind(this)}>Add Image</Button>
+      <Button onClick={handleOpen.bind(this)} variant='contained' color='primary'>Add Image</Button>
       <DropzoneDialog
         open={state.open}
         onSave={handleSave.bind(this)}
@@ -190,7 +190,7 @@ export default function HalfRating() {
         maxFileSize={5000000}
         onClose={handleClose.bind(this)}
       />
-      <Button onClick={handleClick}>Submit</Button>
+      <Button onClick={handleClick} variant='contained' color='primary'>Submit</Button>
       {msgError?(msgError.message):(msgError.success)}
     </form>
     //</div>

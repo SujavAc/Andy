@@ -74,19 +74,19 @@ export default function Footer() {
                   Quick Links
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  About us
+                  <Link to= 'About Us'> About us </Link>
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  FAQs
+                 <Link to ='FAQs'>FAQs</Link> 
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Events
+                <Link to ='Events'>Events</Link>
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Blogs
+                <Link to ='Blog'>Blogs</Link>
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Testimonials
+                <Link to ='Student Testimonials'>Testimonials</Link>
                 </Typography>
               </Grid>
             </Grid>

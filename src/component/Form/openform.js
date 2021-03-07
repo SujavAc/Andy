@@ -20,20 +20,16 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import Slide from "@material-ui/core/Slide";
+import Expert from '../../image/expertadvice.jpg';
+import AddIcCallIcon from "@material-ui/icons/AddIcCall";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // position: "absolute",
-    // left: "50%",
-    // top: "50%",
-    // transform: "translate(-50%, -50%)",
-    //backgroundBlendMode:'luminosity',
-    opacity:2,
-    // height: "200vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    
     color: '#f5f5f5',
     
     "& > *": {
@@ -43,18 +39,13 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
       width: "30ch",
+      
     },
     close: {
       padding: theme.spacing(0.5),
     },
   },
-  // expert: {
-  //   backgroundImage: "url(" + Expert + ")",
-  //   backgroundSize: "cover",
-  //   opacity:0.6 ,
-  //   backgroundBlendMode: 'luminosity',
-  //   zIndex:-1,
-  // },
+  
   error: {
     color: "#ff0000",
   },
@@ -200,7 +191,11 @@ export default function OpenForm() {
 
   return (
     
-    <div  >
+    <div>
+      <p><b>Get help form expert in right time.</b><br></br>It's never too late!!!<br></br><b>Contact Us Today</b><br></br><a href="tel:1234567890">
+              <AddIcCallIcon />
+              12345678
+            </a><br></br><b>OR Fill this form today for more Information.</b></p>
       <form className={classes.root} noValidate>
         <ValidationTextField
           className={classes.margin}

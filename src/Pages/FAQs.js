@@ -7,7 +7,6 @@ return(
     <div>
       <Question />
         <Page 
-        Title={'Welcome To FAQs'} 
         image1={"https://i.redd.it/1vemqfhuf9u41.jpg"}
           pT2={
             "Don’t leave your options to chance, speak with the AECC Global experts before you make a big decision"

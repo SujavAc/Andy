@@ -6,6 +6,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 
 } else{
+    
     $insert =$conn->query("INSERT INTO `courseenquiry` (FirstName, LastName, Email, PhoneNumber, CountryOfPassport, Question, Message, Date) 
     VALUES ('".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['email']."','".$_POST['number']."','".$_POST['passport']."','".$_POST['question']."','".$_POST['message']."',NOW())");
     if($insert){

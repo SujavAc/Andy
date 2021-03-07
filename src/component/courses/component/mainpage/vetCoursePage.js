@@ -9,13 +9,14 @@ import Typography from "@material-ui/core/Typography";
 import NavBarApp from "../../../navbar";
 import Feedback from "../../../feedback";
 import Form from "../../../Form/openform";
-import Expert from "../../../../image/expertadvice.jpg";
+import Expert from "../../../../image/advice.jpg";
 import Footer from "../../../footer";
 import Axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import Question from '../../component/Accordion';
+import Question from './frequentQuestion';
 import Image from 'react-image-file';
 import ExpertOpinion from '../../../../Pages/form';
+import FeedBackForm from '../../../feedbackform/form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     padding: theme.spacing(2),
     margin: 25,
+    width: "auto",
+    background: "linear-gradient(170deg, #fff3e0 30%, #26c6da 90%)",
+  },
+  feedbackform: {
+    height: "auto",
     width: "auto",
     background: "linear-gradient(170deg, #fff3e0 30%, #26c6da 90%)",
   },
@@ -146,7 +152,7 @@ export default function BachelorPage(props) {
                 <Typography gutterBottom variant="h4" component="h1" color="tertiary" >
                   Planning to study <b>{props.Title}</b> course in Australia
                 </Typography>
-                <ExpertOpinion />
+                <ExpertOpinion Title={'Get Expert Suggestions'}/>
             </Paper>
           
         </div>
@@ -168,74 +174,39 @@ export default function BachelorPage(props) {
           {data.Data.map((value, index) => (
             <Paper elevation={5} key={index}>
               <CardContent key={index} className={classes.content}>
-              <p align="left">
-                  <b>Course Level:</b>
-                  <br></br>
-                </p>
-                <Typography gutterBottom variant="h4" component="h3">
-                  {value.Level} of {props.Title}
-                  {/* <img height="fit content" width="330px" src={`data:image/jpeg;base64,${value.Image}`}/> */}
-                </Typography>
-              
+
+              <img height="100%" width="100%" src={`data:image/jpeg;base64,${value.Picture}`}/>
                 <p align="left">
                   <b>Course Description:</b>
                   <br></br>
                 </p>
                 <Typography gutterBottom variant="h6" component="h3">
                   {value.Description}
-                  {/* <img height="fit content" width="330px" src={`data:image/jpeg;base64,${value.Image}`}/> */}
+                  
                 </Typography>
-                <p align="left">
-                  <b>Course Duration:</b>
-                  <br></br>
-                </p>
                 <Typography gutterBottom variant="h6" component="h3">
-                  {value.CourseDuration}
+                  {value.Details}
                   {/* <img height="fit content" width="330px" src={`data:image/jpeg;base64,${value.Image}`}/> */}
                 </Typography>
-                <p align="left">
-                  <b>Fee Structure:</b>
-                  <br></br>
-                </p>
-                <Typography
-                  gutterBottom
-                  variant="h6"
-                  color="primary"
-                  component="h2"
-                >
-                  {value.Feestructure}
-                </Typography>
-                <p align="left">
-                  <b>Career Pathway:</b>
-                  <br></br>
-                </p>
-                <Typography variant="h6" color="primary" component="p">
-                  {value.Carrerpathway}
-                </Typography>
-                <p align="left">
-                  <b>PR Pathway:</b>
-                  <br></br>
-                </p>
-                <Typography variant="h6" color="primary" component="p">
-                  {value.PRPathway}
-                </Typography>
+               
+                
+                
               </CardContent>
               <img height='100%' width="100%" src={img1} />
-              {/* <CardMedia
-              key={index}
-                  className={classes.cover}
-                  image={img1}
-                /> */}
+             
             </Paper>
           ))}
         </div>
       )}
-      <Paper elevation={5} className={classes.faq}>
-      <Question />
+      <Paper elevation={5} className={classes.feedback}>
+        <Question Title={props.Title} />
       </Paper>
       
       <Paper elevation={5} className={classes.feedback}>
         <Feedback />
+      </Paper>
+      <Paper elevation={5} className={classes.feedbackform}>
+        <FeedBackForm />
       </Paper>
       <Paper elevation={5} className={classes.formPaper}>
         <Form />

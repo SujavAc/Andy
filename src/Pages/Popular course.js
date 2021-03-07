@@ -11,7 +11,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Page from './pages';
-import Banner from '../component/topBanner';
+
 import Course from '../image/study-in-australia.jpg';
 import { Link } from "react-router-dom";
 

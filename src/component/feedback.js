@@ -8,6 +8,7 @@ import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Axios from "axios";
 import Rating from "@material-ui/lab/Rating";
 import Avatar from "@material-ui/core/Avatar";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   titleBar: {
     background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
+      "linear-gradient(to top, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
   },
   subtitle: {
     width: "auto",
@@ -75,9 +76,19 @@ export default function SingleLineGridList() {
   }, []);
   return (
     <div className={classes.root}>
+      <Typography gutterBottom variant="h7" component="h2" >
+      Lets hear what our students and clients told about us.
+              </Typography>
+              <Typography gutterBottom variant="h6" component="h2" color="textPrimary">
+              Don’t just take our word for it, check out what our students are saying about us
+
+
+              </Typography>
       <GridList className={classes.gridList} cols={2.5} justify="space-around">
+      
         {feedback.Feedback.map((value) => (
           <GridListTile key={value.ID}>
+           
             
             <div className={classes.avatar}>
               

@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Image from 'react-image-file';
 import Axios from 'axios';
 import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme)=>({
@@ -101,13 +101,16 @@ useEffect(()=>{
                   </Typography>
                 </CardContent>
               </CardActionArea>
+              
               <CardActions>
-                <Link to ={value.Title}>
-                <Button size="small" color="primary">
+              <NavLink to ={value.Title}>
+                <Button variant="contained"
+                      color="primary">
                   Learn More
                 </Button>
-                </Link>
+                </NavLink>
               </CardActions>
+              
               
             </Card>
             

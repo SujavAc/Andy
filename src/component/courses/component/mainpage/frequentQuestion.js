@@ -11,13 +11,13 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    paddingTop:theme.spacing(17),
     
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
     padding:theme.spacing(1),
+    
   },
   date: {
     fontSize: theme.typography.pxToRem(15),
@@ -30,15 +30,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SimpleAccordion() {
+export default function FrequentQuestion(props) {
   const classes = useStyles();
   const [question, setQuestion] = React.useState({ data: [] });
   const [loading, setLoading] = React.useState(true);
-
+  const Title = new FormData();
+  Title.append("Title", props.Title);
+ 
 
   React.useEffect(() => {
     Axios.post(
-      "http://localhost:81/Webandy/webandy/src/database/accordion.php"
+      "http://localhost:81/Webandy/webandy/src/database/vetCourse.php", Title
     )
       .then((response) => {
         setQuestion({ data: response.data });
@@ -59,7 +61,7 @@ export default function SimpleAccordion() {
         <Typography gutterBottom variant="h6" component="h2">
         <p>
           
-          <b>There are no recent queries left.</b> 
+          <b>There are no recent Student queries Yet.</b> 
         </p>
       </Typography>
       ):(
@@ -73,7 +75,7 @@ export default function SimpleAccordion() {
               className={classes.header}
             >
              
-              <Typography className={classes.heading}>{value.Question}</Typography>
+              <Typography className={classes.heading} color="textPrimary">{value.Question}</Typography>
                
                
               
@@ -81,7 +83,7 @@ export default function SimpleAccordion() {
                
             </AccordionSummary>
             <AccordionDetails>
-              <Typography paragraph>
+              <Typography color='textSecondary'>
                 {value.Answer}
               </Typography>
             </AccordionDetails>

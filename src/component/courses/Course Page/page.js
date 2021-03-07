@@ -9,13 +9,14 @@ import Typography from "@material-ui/core/Typography";
 import NavBarApp from "../../navbar";
 import Feedback from "../../feedback";
 import Form from "../../Form/openform";
-import Expert from "../../../image/expertadvice.jpg";
+import Expert from "../../../image/advice.jpg";
 import Footer from "../../footer";
 import Axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Question from '../component/Accordion';
 import Image from 'react-image-file';
 import ExpertOpinion from '../../../Pages/form';
+import FeedBackForm from '../../feedbackform/form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     height: "auto",
     padding: theme.spacing(2),
-    margin: 25,
+    
     width: "auto",
   },
 
@@ -38,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     padding: theme.spacing(2),
     margin: 25,
+    width: "auto",
+    background: "linear-gradient(170deg, #fff3e0 30%, #26c6da 90%)",
+  },
+  feedbackform: {
+    height: "auto",
     width: "auto",
     background: "linear-gradient(170deg, #fff3e0 30%, #26c6da 90%)",
   },
@@ -59,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     height: "auto",
-    padding: theme.spacing(5),
+    padding: theme.spacing(2),
     width: "auto",
     margin: 25,
     // backgroundImage: "url(" + Expert + ")",
@@ -144,7 +150,7 @@ export default function Page(props) {
                 <Typography gutterBottom variant="h4" component="h1" color="tertiary" >
                   Planning to study <b>{props.Title}</b> course in Australia
                 </Typography>
-                <ExpertOpinion />
+                <ExpertOpinion Title={'Get Expert Opinion'}/>
             </Paper>
         </div>
       )}
@@ -213,6 +219,11 @@ export default function Page(props) {
       <Paper elevation={5} className={classes.feedback}>
         <Feedback />
       </Paper>
+      
+      <Paper elevation={5} className={classes.feedbackform}>
+        <FeedBackForm />
+      </Paper>
+      
       <Paper elevation={5} className={classes.formPaper}>
         <Form />
       </Paper>

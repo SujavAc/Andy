@@ -225,7 +225,6 @@ export default function NavBar() {
             {[
               "About Us",
               "Popular Course",
-              "Faculties",
               "Student Services",
             ].map((text, index) => (
               <ListItem button key={index}>
@@ -240,7 +239,6 @@ export default function NavBar() {
             {[
               "Migration Services",
               "Events",
-              "Webinar",
               "Blog",
               "Student Testimonials",
               "FAQs",

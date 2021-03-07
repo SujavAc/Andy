@@ -12,87 +12,64 @@ import Axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import EventRegisterForm from "../component/EventRegisterForm";
 import Menu from "@material-ui/core/Menu";
-import EventDetails from './eventDetails';
-import NavBar from '../component/navbar';
-import Footer from '../component/footer';
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
+    width: "100%",
+    height: "100%",
     "& > *": {
       width: "100%",
-      height: theme.spacing(16),
+      height: theme.spacing(10),
     },
-    flexGrow: 1,
-    width: "auto",
-    height: "auto",
+    
+    
   },
   title: {
     height: "auto",
-    padding: theme.spacing(5),
+    padding: theme.spacing(10),
     width: "auto",
     justifyContent: "center",
     textAlign: "center",
   },
 
   card: {
+    display: "flex",
+    displayDirection: "column",
     width: "auto",
     height: "auto",
-    padding: theme.spacing(5),
+    
   },
   formMenu: {
     width: "auto",
     alignContent: "center",
     justifyContent: "center",
   },
-  formdetails:{
-    width: "80%",
-    alignContent: "center",
-    justifyContent: "center",
-  },
-  cardContainer:{
-    width:'auto',
-    height:'auto',
-    display:'inline-block',
-    justifyContent:'space-between',
-    margin:10,
-    [theme.breakpoints.up('sm')]: {
-      width:'auto',
-    height:'auto',
-    },
-
-
-   
-    
-  },
 }));
 
-export default function EventsPage() {
+export default function EventsDetails(props) {
   const classes = useStyles();
   const [data, setData] = React.useState({ Data: [] });
   const [loading, setLoading] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [eventDetail, setEventDetail] = React.useState(null);
-  
+  const Topic = props.EventTopic;
   const openForm = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const openForm1 = (event) => {
-    setEventDetail(event.currentTarget);
-  };
-
-  const handleClose1 = () => {
-    setEventDetail(null);
-  };
-
+  const formData = new FormData();
+  formData.append('Topic',Topic);
   React.useEffect(() => {
-    Axios.post("http://localhost:81/Webandy/webandy/src/database/Event.php")
+    Axios.post("http://localhost:81/Webandy/webandy/src/database/EventDetails.php",formData)
       .then((response) => {
         setData({ Data: response.data });
         console.log(response.data);
+        console.log(Topic);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -100,30 +77,32 @@ export default function EventsPage() {
   
   return (
     <div className={classes.root}>
-      <NavBar />
-      <Paper elevation={3} className={classes.title}>
-        <Typography gutterBottom variant="h4" component="h3">
-          Upcoming Events
-        </Typography>
-      </Paper>
-      <Paper elevation={6} className={classes.card}>
+        <Card>
+          <Typography gutterBottom variant="h6" component="h2">
+            <p align="center">
+              <b>{props.EventTopic}</b>
+            </p>
+          </Typography>
+        </Card>
       {loading ? (
         <LinearProgress />
       ) : data.Data == 0 ? (
         <Card>
           <Typography gutterBottom variant="h6" component="h2">
-            <p align="center">
-              <b>There are no Upcoming Events.</b>
+            <p>
+              <b>The event is pospond.</b>
             </p>
           </Typography>
         </Card>
       ) : (
         <div>
-          
+          <Paper elevation={6} className={classes.card}>
             {data.Data.map((value, index) => {
               const image = value.Image;
+              const speaker1 = value.SpeakerImage;
+              const speaker2 = value.SpeakerImage2;
+              
               return (
-                <div  className={classes.cardContainer}>
                 <Card  key={index}>
                   <CardActionArea disabled>
                     <CardMedia
@@ -148,12 +127,56 @@ export default function EventsPage() {
                       >
                         {value.Time}
                       </Typography>
+                      <Typography paragraph
+                        
+                        
+                      >
+                        {value.Description}
+                      </Typography>
                       <Typography
-                        variant="body2"
-                        color="textSecondary"
+                        variant="h4"
+                        color="textPrimary"
                         component="p"
                       >
-                        {value.Status}
+                        Host By:
+                      </Typography>
+                      <CardMedia
+                      component="img"
+                      height="230"
+                      image={`data:image/jpeg;base64,${speaker1}`}
+                    />
+                      <Typography
+                        variant="h6"
+                        color="textPrimary"
+                        component="p"
+                      >
+                        {value.SpeakerName}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textPrimary"
+                        component="p"
+                      >
+                        {value.SpeakerPosition}
+                      </Typography>
+                      <CardMedia
+                      component="img"
+                      height="230"
+                      image={`data:image/jpeg;base64,${speaker2}`}
+                    />
+                      <Typography
+                        variant="h6"
+                        color="textPrimary"
+                        component="p"
+                      >
+                        {value.SpeakerName2}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="textPrimary"
+                        component="p"
+                      >
+                        {value.SpeakerPosition2}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -166,6 +189,7 @@ export default function EventsPage() {
                         aria-controls="simple-menu"
                         aria-haspopup="true"
                         onClick={openForm}
+                        variant='contained'
                       >
                         Register Here
                       </Button>
@@ -179,42 +203,21 @@ export default function EventsPage() {
                       >
                         <EventRegisterForm Eventname={value.Topic} />
                       </Menu>
-                      <Button size="small" color="primary" aria-controls="Form-details"
-                        aria-haspopup="true" onClick={openForm1}>
-                        Learn More
-                      </Button>
-                      <Menu
-                        className={classes.formdetails}
-                        id="Form-details"
-                        anchorEl={eventDetail}
-                        keepMounted
-                        open={Boolean(eventDetail)}
-                        onClose={handleClose1}
-                      >
-                        <EventDetails EventTopic={value.Topic} />
-                      </Menu>
+                     
                     </CardActions>
                   ) : (
                     <CardActions>
                       <Button size="small" color="primary" disabled>
                         Register Here
                       </Button>
-                      <Button size="small" color="primary" disabled>
-                        Learn More
-                      </Button>
                     </CardActions>
                   )}
                 </Card>
-                </div>
               );
-            })}
-          
+            },[data.Data])}
+          </Paper>
         </div>
       )}
-      </Paper>
-      
-      <Footer />
-      
     </div>
   );
 }

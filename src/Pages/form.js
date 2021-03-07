@@ -66,14 +66,14 @@ const useStyles = makeStyles((theme) => ({
   success: {
     color: "#00ff00",
   },
-  floatIcon: {
-    "& > *": {
-      margin: theme.spacing(1),
-      position: "fixed",
-      right: "0%",
-      top: "50%",
-    },
-  },
+  // floatIcon: {
+  //   "& > *": {
+  //     margin: theme.spacing(1),
+  //     position: "fixed",
+  //     right: "0%",
+  //     top: "50%",
+  //   },
+  // },
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
@@ -389,7 +389,7 @@ DialogForm.propTypes = {
   selectedValue: PropTypes.string.isRequired,
 };
 
-export default function Form() {
+export default function Form(props) {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState();
   const classes = useStyles();
@@ -405,7 +405,7 @@ export default function Form() {
   return (
     <div className={classes.floatIcon}>
       <Fab variant="extended" onClick={handleClickOpen}>
-        Talk with Experts
+        {props.Title}
       </Fab>
       <DialogForm
         selectedValue={selectedValue}
