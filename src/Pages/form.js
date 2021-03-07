@@ -158,7 +158,7 @@ function DialogForm(props) {
       // formData.append('formdata','formdata');
 
       Axios.post(
-        "http://192.168.1.110:81/Webandy/webandy/src/database/form.php",
+        "http://localhost:81/Webandy/webandy/src/database/form.php",
         formData
       )
         .then((res) => {
