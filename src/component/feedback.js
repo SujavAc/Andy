@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
 import Axios from "axios";
 import Rating from "@material-ui/lab/Rating";
 import Avatar from "@material-ui/core/Avatar";
@@ -17,16 +15,15 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "space-around",
     overflow: "hidden",
-    
   },
   gridList: {
-    display:'flex',
+    display: "flex",
     flexWrap: "nowrap",
     // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(1)",
-    cellHeight:'auto',
-    cellWidth:'auto',
-    padding:theme.spacing(1),
+    cellHeight: "auto",
+    cellWidth: "auto",
+    padding: theme.spacing(1),
   },
   title: {
     color: theme.palette.secondary.light,
@@ -43,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     display: "flex",
     flexDirection: "rows",
-    justifyContent: 'space-between',
-    padding:7,
+    justifyContent: "space-between",
+    padding: 7,
   },
   large: {
     width: theme.spacing(7),
@@ -54,9 +51,8 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     display: "flex",
     flexDirection: "rows",
-    justifyContent: 'space-between',
-    paddingTop:theme.spacing(2),
-    
+    justifyContent: "space-between",
+    paddingTop: theme.spacing(2),
   },
 }));
 
@@ -76,40 +72,35 @@ export default function SingleLineGridList() {
   }, []);
   return (
     <div className={classes.root}>
-      <Typography gutterBottom variant="h7" component="h2" >
-      Lets hear what our students and clients told about us.
-              </Typography>
-              <Typography gutterBottom variant="h6" component="h2" color="textPrimary">
-              Don’t just take our word for it, check out what our students are saying about us
-
-
-              </Typography>
+      <Typography gutterBottom variant="h7" component="h2">
+        Lets hear what our students and clients told about us.
+      </Typography>
+      <Typography gutterBottom variant="h6" component="h2" color="textPrimary">
+        Don’t just take our word for it, check out what our students are saying
+        about us
+      </Typography>
       <GridList className={classes.gridList} cols={2.5} justify="space-around">
-      
         {feedback.Feedback.map((value) => (
           <GridListTile key={value.ID}>
-           
-            
             <div className={classes.avatar}>
-              
               <Avatar
                 alt="Remy Sharp"
                 src={`data:image/jpeg;base64,${value.Image}`}
                 className={classes.large}
               />
               {value.Message}
-              </div>
-              {/* <img src={`data:image/jpeg;base64,${value.Image}`}/> */}
-              <div className={classes.rating}>
-                <Rating
-                  name="read-only"
-                  defaultValue={value.Rating}
-                  size="large"
-                  readOnly
-                />
-                {value.Date}
-              </div>
-            
+            </div>
+            {/* <img src={`data:image/jpeg;base64,${value.Image}`}/> */}
+            <div className={classes.rating}>
+              <Rating
+                name="read-only"
+                defaultValue={value.Rating}
+                size="large"
+                readOnly
+              />
+              {value.Date}
+            </div>
+
             <GridListTileBar
               titlePosition="bottom"
               title={value.Email}
@@ -117,8 +108,6 @@ export default function SingleLineGridList() {
                 root: classes.titleBar,
                 title: classes.title,
               }}
-              
-              
             />
           </GridListTile>
         ))}

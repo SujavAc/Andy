@@ -2,9 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import NavBarApp from "../../navbar";
 import Feedback from "../../feedback";
@@ -14,7 +11,6 @@ import Footer from "../../footer";
 import Axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Question from '../component/Accordion';
-import Image from 'react-image-file';
 import ExpertOpinion from '../../../Pages/form';
 import FeedBackForm from '../../feedbackform/form';
 

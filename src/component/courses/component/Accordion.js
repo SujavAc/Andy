@@ -55,7 +55,7 @@ export default function SimpleAccordion() {
     <div className={classes.root}>
         {loading ? (
             <LinearProgress />
-      ) : question.data == 0 ? (
+      ) : question.data === 0 ? (
         <Typography gutterBottom variant="h6" component="h2">
         <p>
           

@@ -2,9 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
 import NavBarApp from "../../../navbar";
 import Feedback from "../../../feedback";
@@ -13,10 +10,9 @@ import Expert from "../../../../image/advice.jpg";
 import Footer from "../../../footer";
 import Axios from "axios";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import Question from './frequentQuestion';
-import Image from 'react-image-file';
-import ExpertOpinion from '../../../../Pages/form';
-import FeedBackForm from '../../../feedbackform/form';
+import Question from "./frequentQuestion";
+import ExpertOpinion from "../../../../Pages/form";
+import FeedBackForm from "../../../feedbackform/form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,9 +54,9 @@ const useStyles = makeStyles((theme) => ({
   faq: {
     height: "auto",
     padding: theme.spacing(2),
-    
+
     width: "auto",
-    backgroundImage: '#000',
+    backgroundImage: "#000",
     backgroundSize: "cover",
   },
   image: {
@@ -79,7 +75,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     textAlign: "center",
     padding: theme.spacing(1),
-    
   },
   bg: {
     // backgroundImage:
@@ -103,7 +98,6 @@ const useStyles = makeStyles((theme) => ({
     // paddingTop: '56.25%', // 16:9,
     // marginTop:'30'
   },
-  
 }));
 
 export default function BachelorPage(props) {
@@ -112,7 +106,6 @@ export default function BachelorPage(props) {
   const [loading, setLoading] = React.useState(true);
   const Title = new FormData();
   Title.append("Title", props.Title);
- 
 
   React.useEffect(() => {
     Axios.post(
@@ -127,14 +120,12 @@ export default function BachelorPage(props) {
       .catch((err) => console.log(err));
   }, [data.Data]);
 
-  
-
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <NavBarApp />
-      
+
       {loading ? (
         <LinearProgress />
       ) : data.Data.length === 0 ? (
@@ -147,17 +138,19 @@ export default function BachelorPage(props) {
         </Paper>
       ) : (
         <div className={classes.Title}>
-          
-            <Paper elevation={5}  className={classes.bg}>
-                <Typography gutterBottom variant="h4" component="h1" color="tertiary" >
-                  Planning to study <b>{props.Title}</b> course in Australia
-                </Typography>
-                <ExpertOpinion Title={'Get Expert Suggestions'}/>
-            </Paper>
-          
+          <Paper elevation={5} className={classes.bg}>
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="h1"
+              color="tertiary"
+            >
+              Planning to study <b>{props.Title}</b> course in Australia
+            </Typography>
+            <ExpertOpinion Title={"Get Expert Suggestions"} />
+          </Paper>
         </div>
       )}
-     
 
       {loading ? (
         <LinearProgress />
@@ -174,26 +167,24 @@ export default function BachelorPage(props) {
           {data.Data.map((value, index) => (
             <Paper elevation={5} key={index}>
               <CardContent key={index} className={classes.content}>
-
-              <img height="100%" width="100%" src={`data:image/jpeg;base64,${value.Picture}`}/>
+                <img
+                  height="100%"
+                  width="100%"
+                  src={`data:image/jpeg;base64,${value.Picture}`}
+                />
                 <p align="left">
                   <b>Course Description:</b>
                   <br></br>
                 </p>
                 <Typography gutterBottom variant="h6" component="h3">
                   {value.Description}
-                  
                 </Typography>
                 <Typography gutterBottom variant="h6" component="h3">
                   {value.Details}
                   {/* <img height="fit content" width="330px" src={`data:image/jpeg;base64,${value.Image}`}/> */}
                 </Typography>
-               
-                
-                
               </CardContent>
-              <img height='100%' width="100%" src={img1} />
-             
+              <img height="100%" width="100%" src={img1} />
             </Paper>
           ))}
         </div>
@@ -201,7 +192,7 @@ export default function BachelorPage(props) {
       <Paper elevation={5} className={classes.feedback}>
         <Question Title={props.Title} />
       </Paper>
-      
+
       <Paper elevation={5} className={classes.feedback}>
         <Feedback />
       </Paper>

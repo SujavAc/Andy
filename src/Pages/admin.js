@@ -8,19 +8,8 @@ import Slide from "@material-ui/core/Slide";
 import Fade from "@material-ui/core/Fade";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-//import DeleteFunction from '../database/deleteData.php';
-import DeleteIcon from "@material-ui/icons/Delete";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-//import CardMedia from '@material-ui/core/CardMedia';
-import Typography from "@material-ui/core/Typography";
-import { Container, Grid, Grow } from "@material-ui/core";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import Page from "./pages";
 import Paper from "@material-ui/core/Paper";
-import ButtonDelete from "../component/button";
 import EnquiryList from "../component/Admin/enquiryList";
 
 function SlideTransition(props) {

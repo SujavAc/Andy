@@ -60,7 +60,7 @@ export default function AboutUs() {
       <NavBarApp />
       
       <Paper elevation={5} className={classes.paper}>
-        <img style ={{height:'50%',width:'50%'}} src={Whoarewe}/>
+        <img style ={{height:'50%',width:'50%'}} alt="bannar" src={Whoarewe}/>
         <Typography
           variant="body2"
           gutterBottom
@@ -106,7 +106,7 @@ export default function AboutUs() {
               <Grid item xs>
                 <Typography variant="subtitle1">General Enquiries</Typography>
                 <Typography variant="body2" gutterBottom>
-                  Email: info@roger.com
+                  Email: andy@rogergroup.com.au
                 </Typography>
                 <EnquiryForm />
               </Grid>

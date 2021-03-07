@@ -1,33 +1,24 @@
 import React, { useState, useMemo } from "react";
 import {
   fade,
-  //ThemeProvider,
   withStyles,
   makeStyles,
-  //createMuiTheme,
+  
 } from "@material-ui/core/styles";
-//import InputBase from '@material-ui/core/InputBase';
-//import InputLabel from '@material-ui/core/InputLabel';
 import TextField from "@material-ui/core/TextField";
-//import FormControl from '@material-ui/core/FormControl';
-//import { green } from '@material-ui/core/colors';
 import MenuItem from "@material-ui/core/MenuItem";
 import countryList from "react-select-country-list";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
-import Fade from "@material-ui/core/Fade";
 import Snackbar from "@material-ui/core/Snackbar";
-import CloseIcon from "@material-ui/icons/Close";
-import IconButton from "@material-ui/core/IconButton";
-import Slide from "@material-ui/core/Slide";
-import NavigationIcon from "@material-ui/icons/Navigation";
+import MuiAlert from "@material-ui/lab/Alert";
 import Fab from "@material-ui/core/Fab";
 import PropTypes from "prop-types";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 
-function SlideTransition(props) {
-  return <Slide {...props} direction="up" />;
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 const question = [
   {
@@ -109,10 +100,8 @@ function DialogForm(props) {
     question: "",
     message: "",
   });
-  const [state, setState] = React.useState({
-    open: false,
-    Transition: Fade,
-  });
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
   const [msg, setMsg] = useState({ errMsg: "", successMsg: "" });
 
   var pattern = new RegExp(
@@ -122,14 +111,20 @@ function DialogForm(props) {
     /^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$/i
   );
 
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenSnackbar(false);
+  };
   const handleClose = () => {
     onClose(selectedValue);
   };
 
-  const onSubmitForm = (Transition) => () => {
-    setState({
+  const onSubmitForm = () => {
+    setOpenSnackbar({
       open: true,
-      Transition,
     });
     if (
       !data.firstname ||
@@ -163,7 +158,7 @@ function DialogForm(props) {
       // formData.append('formdata','formdata');
 
       Axios.post(
-        "http://localhost:81/Webandy/webandy/src/database/form.php",
+        "http://192.168.1.110:81/Webandy/webandy/src/database/form.php",
         formData
       )
         .then((res) => {
@@ -179,12 +174,6 @@ function DialogForm(props) {
         });
     }
   };
-  const handleCloseSnackBar = () => {
-    setState({
-      ...state,
-      open: false,
-    });
-  };
 
   return (
     <Dialog
@@ -192,7 +181,7 @@ function DialogForm(props) {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      <DialogTitle id="simple-dialog-title" >Seek help with experts</DialogTitle>
+      <DialogTitle id="simple-dialog-title">Seek help with experts</DialogTitle>
 
       <form className={classes.root} noValidate>
         <ValidationTextField
@@ -351,28 +340,26 @@ function DialogForm(props) {
           variant="contained"
           size="small"
           color="primary"
-          onClick={onSubmitForm(SlideTransition)}
+          onClick={onSubmitForm}
         >
           Send
         </Button>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          onClose={handleCloseSnackbar}
+        >
+          {msg.errMsg ? (
+            <Alert onClose={handleCloseSnackbar} severity="error">
+              {msg.errMsg}
+            </Alert>
+          ) : (
+            <Alert onClose={handleCloseSnackbar} severity="success">
+              {msg.successMsg}
+            </Alert>
+          )}
+        </Snackbar>
       </form>
-      <Snackbar
-        open={state.open}
-        onClose={handleClose}
-        TransitionComponent={state.Transition}
-        message={msg.errMsg ? msg.errMsg : msg.successMsg}
-        key={state.Transition.name}
-        action={
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            className={classes.close}
-            onClick={handleCloseSnackBar}
-          >
-            <CloseIcon />
-          </IconButton>
-        }
-      />
 
       {/* {msg.errMsg ?(
         <div className={classes.error}>{msg.errMsg}</div>

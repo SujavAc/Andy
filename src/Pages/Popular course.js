@@ -1,65 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Image from 'react-image-file';
-import Footer from "../component/footer";
 import Axios from 'axios';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Page from './pages';
-
-import Course from '../image/study-in-australia.jpg';
+import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme)=>({
 root: {
-    maxWidth: 'auto',
+    flexGrow:1,
+    paddingTop:theme.spacing(16),
+    padding:theme.spacing(2),
     
   },
   media: {
     height: 400,
     width:450,
-    
-    
-  },
-  contentData:{
-    width:'100%',
-    height:'100%',
-    marginTop:theme.spacing(15),
-    
-    
-  },
-  data:{
-   width:'430px',
-    height:'350px',
-    padding:'30px',
-    display:'inline-block',
-    [theme.breakpoints.up('sm')]: {
-      width:'375px',
-    height:'200px',
-    },
-  },
-  paper: {
-    height: "auto",
-    padding: theme.spacing(2),
-    margin: 25,
-    width: "auto",
-    backgroundColor: theme.palette.background.paper,
-  },
-  banner: {
-    height: "100vh",
-    width: "auto",
-    backgroundImage: "url(" + Course + ")",
-    backgroundSize: "cover",
-    // position: "absolute",
-    // left: "50%",
-    // top: "50%",
-    // transform: "translate(-50%, -50%)",
-  },
+   },
+   
 }));
 
 
@@ -80,15 +44,15 @@ useEffect(()=>{
         //console.log(courseList);
        
 return(
-    <div className={classes.contentData}>
-
-   
+    <div className={classes.root}>
+      <Grid container spacing={3}>
       
-        {courseList.course.map((value,index)=>{
+      {courseList.course.map((value,index)=>{
         const image = (value.Image);
         return(
-          <div className={classes.data}>
-            <Card className={classes.root} key={index.ID}>
+          
+          <Grid item xs={6} >
+            <Card key={index.ID}>
             <Image src={{uri:`data:image/jpeg;base64,${value.Image}`}} />
               
               
@@ -124,15 +88,18 @@ return(
                 </Link>
               </CardActions>
               
-            </Card>
-            
+            </Card> 
+            </Grid>
            
-          </div>   
-         
         )
         
         
       })}
+      
+      </Grid>
+   
+      
+        
    
         <Page  
         Title={'Welcome To Popular Courses'} 

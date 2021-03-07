@@ -4,14 +4,11 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import RestoreIcon from "@material-ui/icons/Restore";
 import FilterListIcon from "@material-ui/icons/FilterList";
-import SearchIcon from "@material-ui/icons/Search";
 import Collapse from "@material-ui/core/Collapse";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Axios from "axios";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import NavBar from '../component/navbar';
 import BlogData from '../Pages/blognavigation';
 

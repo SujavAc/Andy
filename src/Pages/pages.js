@@ -13,7 +13,7 @@ import Expert from "../image/advice.jpg";
 import Footer from "../component/footer";
 import ExpertForm from './form';
 import FeedBackForm from '../component/feedbackform/form';
-
+import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -85,10 +85,14 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   card: {
-    maxWidth:370,
-    margin:35,
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
    
     
+  },
+  service:{
+    flexGrow:1,
   },
   media: {
     // height: 0,
@@ -167,8 +171,16 @@ export default function Pages(props) {
           </CardActionArea>
         </Card>
       </Paper>
+
+
+
       <Paper elevation={5} className={classes.services}>
-      <Card className={classes.card}>
+      <div className={classes.service}>
+      <Grid container spacing={3}>
+        
+        <Grid item xs={6}>
+          
+          <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -187,6 +199,8 @@ export default function Pages(props) {
             </CardContent>
           </CardActionArea>
         </Card>
+        </Grid>
+        <Grid item xs={6}>
         <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
@@ -206,6 +220,8 @@ export default function Pages(props) {
             </CardContent>
           </CardActionArea>
         </Card>
+        </Grid>
+        <Grid item xs={6}>
         <Card className={classes.card}>
           <CardActionArea>
             <CardMedia
@@ -225,7 +241,15 @@ export default function Pages(props) {
             </CardContent>
           </CardActionArea>
         </Card>
+        </Grid>
+        
+      </Grid>
+    </div>
       </Paper>
+
+
+
+
       <Paper elevation={5} className={classes.feedback}>
         <Feedback />
       </Paper>

@@ -109,7 +109,7 @@ export default function EventsPage() {
       <Paper elevation={6} className={classes.card}>
       {loading ? (
         <LinearProgress />
-      ) : data.Data == 0 ? (
+      ) : data.Data === 0 ? (
         <Card>
           <Typography gutterBottom variant="h6" component="h2">
             <p align="center">
@@ -158,7 +158,7 @@ export default function EventsPage() {
                     </CardContent>
                   </CardActionArea>
 
-                  {value.Status == "Open" ? (
+                  {value.Status === "Open" ? (
                     <CardActions>
                       <Button
                         size="small"
