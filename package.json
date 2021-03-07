@@ -1,4 +1,5 @@
 {
+  "homepage":"http://SujavAC.github.io/Andy",
   "name": "webandy",
   "version": "0.1.0",
   "private": true,
@@ -17,6 +18,7 @@
     "countries-list": "^2.6.1",
     "devextreme": "20.2.5",
     "devextreme-react": "20.2.5",
+    "gh-pages": "^3.1.0",
     "google-maps-react": "^2.0.6",
     "material-ui-dropzone": "^3.5.0",
     "react": "^17.0.1",
@@ -32,6 +34,8 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
