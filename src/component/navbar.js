@@ -9,7 +9,6 @@ import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
-import Slider from "../image/slider.jpg";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -85,9 +84,15 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     [theme.breakpoints.up("xs")]: {
-      width: "15ch",
+      width: "12ch",
       "&:focus": {
-        width: "20ch",
+        width: "10ch",
+      },
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "40ch",
       },
     },
   },
@@ -96,10 +101,12 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: drawerWidth,
+    height:'100%',
     flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor:'#424242',
   },
   drawerHeader: {
     display: "flex",
@@ -126,8 +133,8 @@ const useStyles = makeStyles((theme) => ({
       height: "100px",
     },
   },
-  slider: {
-    background: `url(${Slider})`,
+  text: {
+    color:'#fafafa',
   },
 }));
 
@@ -229,7 +236,7 @@ export default function NavBar() {
             ].map((text, index) => (
               <ListItem button key={index}>
                 <Link to={text}>
-                  <ListItemText primary={text} />
+                  <ListItemText className={classes.text} primary={text} />
                 </Link>
               </ListItem>
             ))}
@@ -246,7 +253,7 @@ export default function NavBar() {
             ].map((text, index) => (
               <ListItem button key={index}>
                 <Link to={text}>
-                  <ListItemText primary={text} />
+                  <ListItemText className={classes.text} primary={text} />
                 </Link>
               </ListItem>
             ))}
