@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       width: "100%",
-      height:'auto',
       height: theme.spacing(5),
     },
     close: {
@@ -67,7 +66,7 @@ export default function List() {
       </h1>
       {loading ? (
         <LinearProgress />
-      ) : enquiryData.data == 0 ? (
+      ) : enquiryData.data === 0 ? (
         
         <div className={classes.paper}>
         <Container>

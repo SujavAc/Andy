@@ -33,7 +33,7 @@ export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
   const [search, setSearch] = React.useState(false);
   const [data, setData] = React.useState({ Data: [] });
-  const [loading, setLoading] = React.useState(true);
+  //const [loading, setLoading] = React.useState(true);
   const [form,setForm] = React.useState({category:'',title:'',authorname:'',date:''});
 
   const handleClick = () => {
@@ -45,7 +45,7 @@ export default function SimpleBottomNavigation() {
         setData({ Data: response.data });
         console.log(response.data);
         console.log(form);
-        setLoading(false);
+        // setLoading(false);
       })
       .catch((err) => console.log(err));
   }, [form]);

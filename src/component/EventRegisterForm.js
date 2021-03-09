@@ -94,7 +94,7 @@ export default function EventRegisterForm(props) {
         .then((res) => {
           console.log(res);
           console.log(data);
-          if(res.data == 'Your have successfully register for event.'){
+          if(res.data === 'Your have successfully register for event.'){
             setMsg({
                 successMsg: res.data,
               });

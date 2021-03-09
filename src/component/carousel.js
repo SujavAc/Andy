@@ -88,15 +88,7 @@ function SwipeableTextMobileStepper() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = tutorialSteps.length;
-  const [open, setOpen] = React.useState(false);
-
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
+  const [open] = React.useState(false);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -111,7 +103,7 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <div className={classes.root,clsx(classes.carousel, {
+    <div className={clsx((classes.carousel), {
       [classes.carouselShift]:open
     }
         

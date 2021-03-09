@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       width: "auto",
-      height: "auto",
       height: theme.spacing(16),
     },
     close: {
@@ -39,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
   card: {
     maxWidth: "100%",
-    height: 300,
     width: "100%",
     height: "auto",
   },
@@ -68,33 +66,32 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     margin: 25,
     marginTop: 150,
-    width: "auto",
   },
 }));
 
 export default function Admin() {
   const [data, setData] = useState({ Title: "", Description: "" });
-  const [enquiryData, setEnquiryData] = React.useState({ data: [] });
+  // const [enquiryData, setEnquiryData] = React.useState({ data: [] });
   const [image, setImage] = useState({ selectedFile: "" });
   const [msgError, setMsgError] = useState({ message: "", success: "" });
   const classes = useStyles();
-  const [loading, setLoading] = React.useState(true);
+  // const [loading, setLoading] = React.useState(true);
   const [state, setState] = React.useState({
     open: false,
     Transition: Fade,
   });
 
-  React.useEffect(() => {
-    Axios.post(
-      "http://localhost:81/Webandy/webandy/src/database/getenquiryform.php"
-    )
-      .then((response) => {
-        console.log(response.data);
-        setEnquiryData({ data: response.data });
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // React.useEffect(() => {
+  //   Axios.post(
+  //     "http://localhost:81/Webandy/webandy/src/database/getenquiryform.php"
+  //   )
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setEnquiryData({ data: response.data });
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const onChangeFile = (event) => {
     const picture = event.target.files[0];

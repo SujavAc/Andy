@@ -52,7 +52,7 @@ export default function EventsDetails(props) {
   const [data, setData] = React.useState({ Data: [] });
   const [loading, setLoading] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const Topic = props.EventTopic;
+  
   const openForm = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -62,18 +62,18 @@ export default function EventsDetails(props) {
     setAnchorEl(null);
   };
 
-  const formData = new FormData();
-  formData.append('Topic',Topic);
+  
   React.useEffect(() => {
+    const formData = new FormData();
+  formData.append('Topic',props.EventTopic);
     Axios.post("http://localhost:81/Webandy/webandy/src/database/EventDetails.php",formData)
       .then((response) => {
         setData({ Data: response.data });
         console.log(response.data);
-        console.log(Topic);
         setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [props.EventTopic,data.Data]);
   
   return (
     <div className={classes.root}>

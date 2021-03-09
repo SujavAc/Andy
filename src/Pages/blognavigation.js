@@ -64,8 +64,7 @@ export default function BlogCard(props) {
   const [data, setData] = React.useState({ Data: [] });
   const [loading, setLoading] = React.useState(true);
   const [expanded, setExpanded] = React.useState(false);
-  const [form,setForm] = React.useState(props)
-
+  
   const handleExpandClick=() => {
     
       setExpanded(!expanded);
@@ -74,20 +73,17 @@ export default function BlogCard(props) {
   };
   
 
-  const filterdata = new FormData();
-  filterdata.append('title',props.Title);
-  filterdata.append('category',props.Category);
-  filterdata.append('date',props.Date);
-  filterdata.append('authorname',props.Authorname);
-
+ 
   React.useEffect(() => {
-    setForm(props);
+    const filterdata = new FormData();
+    filterdata.append('title',props.Title);
+    filterdata.append('category',props.Category);
+    filterdata.append('date',props.Date);
+    filterdata.append('authorname',props.Authorname);
     Axios.post("http://localhost:81/Webandy/webandy/src/database/blogfilter.php",filterdata)
       .then((response) => {
         setData({ Data: response.data });
         console.log(response);
-        
-        console.log(form);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -101,7 +97,7 @@ export default function BlogCard(props) {
         <Grid xs={12}>
         {loading ? (
         <LinearProgress />
-      ) : data.Data == 0 ? (
+      ) : data.Data === 0 ? (
         <Card>
           <Typography gutterBottom variant="h6" component="h2">
             <p align="center">

@@ -34,11 +34,12 @@ export default function FrequentQuestion(props) {
   const classes = useStyles();
   const [question, setQuestion] = React.useState({ data: [] });
   const [loading, setLoading] = React.useState(true);
-  const Title = new FormData();
-  Title.append("Title", props.Title);
+  
  
 
   React.useEffect(() => {
+    const Title = new FormData();
+  Title.append("Title", props.Title);
     Axios.post(
       "http://localhost:81/Webandy/webandy/src/database/vetCourse.php", Title
     )
@@ -49,7 +50,7 @@ export default function FrequentQuestion(props) {
         
       })
       .catch((err) => console.log(err));
-  }, [question.data]);
+  }, [question.data,props.Title]);
 
   
 

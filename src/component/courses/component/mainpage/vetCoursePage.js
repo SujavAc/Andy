@@ -104,10 +104,11 @@ export default function BachelorPage(props) {
   const img1 = props.Image;
   const [data, setData] = React.useState({ Data: [] });
   const [loading, setLoading] = React.useState(true);
-  const Title = new FormData();
+  
+  React.useEffect(() => {
+    const Title = new FormData();
   Title.append("Title", props.Title);
 
-  React.useEffect(() => {
     Axios.post(
       "http://localhost:81/Webandy/webandy/src/database/courseDetail.php",
       Title
@@ -118,7 +119,7 @@ export default function BachelorPage(props) {
         console.log(response.data);
       })
       .catch((err) => console.log(err));
-  }, [data.Data]);
+  }, [data.Data,props.Title]);
 
   const classes = useStyles();
 
@@ -154,7 +155,7 @@ export default function BachelorPage(props) {
 
       {loading ? (
         <LinearProgress />
-      ) : data.Data == 0 ? (
+      ) : data.Data === 0 ? (
         <Paper elevation={5} className={classes.image}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="h3">
@@ -167,7 +168,8 @@ export default function BachelorPage(props) {
           {data.Data.map((value, index) => (
             <Paper elevation={5} key={index}>
               <CardContent key={index} className={classes.content}>
-                <img
+                <img alt="paper"
+                
                   height="100%"
                   width="100%"
                   src={`data:image/jpeg;base64,${value.Picture}`}
@@ -184,7 +186,7 @@ export default function BachelorPage(props) {
                   {/* <img height="fit content" width="330px" src={`data:image/jpeg;base64,${value.Image}`}/> */}
                 </Typography>
               </CardContent>
-              <img height="100%" width="100%" src={img1} />
+              <img alt="card" height="100%" width="100%" src={img1} />
             </Paper>
           ))}
         </div>

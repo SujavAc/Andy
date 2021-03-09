@@ -106,10 +106,11 @@ export default function Page(props) {
   const img1 = props.Image;
   const [data, setData] = React.useState({ Data: [] });
   const [loading, setLoading] = React.useState(true);
-  const Title = new FormData();
-  Title.append("Title", props.Title);
+  
 
   React.useEffect(() => {
+    const Title = new FormData();
+  Title.append("Title", props.Title);
     Axios.post(
       "http://localhost:81/Webandy/webandy/src/database/course.php",
       Title
@@ -120,7 +121,7 @@ export default function Page(props) {
         console.log(response.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [data.Data,props.Title]);
 
   
 
@@ -168,7 +169,7 @@ export default function Page(props) {
             <Paper elevation={5} key={index}>
               <CardContent key={index} className={classes.content}>
               {/* <Image src={`data:image/jpeg;base64,${value.Image}`} /> */}
-              <img  width="100%" height="100%" src={`data:image/jpeg;base64,${value.Image}`}/>
+              <img alt="description of paper" width="100%" height="100%" src={`data:image/jpeg;base64,${value.Image}`}/>
                 <p align="left">
                   <b>Course Description:</b>
                   <br></br>
@@ -198,7 +199,7 @@ export default function Page(props) {
                   {value.CarrerPathway}
                 </Typography>
               </CardContent>
-              <img height='100%' width="100%" src={img1} />
+              <img alt="description of card" height='100%' width="100%" src={img1} />
               {/* <CardMedia
               key={index}
                   className={classes.cover}

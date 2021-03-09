@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import NavBarApp from "../component/navbar";
-import Map from "../component/Map/map";
+//import Map from "../component/Map/map";
 import EnquiryForm from "../component/enquiryform";
 import Footer from "../component/footer";
 import Form from '../component/Form/openform';
@@ -114,9 +114,9 @@ export default function AboutUs() {
           </Grid>
         </Grid>
       </Paper>
-      <Paper elevation={5} className={classes.paper}>
+      {/* <Paper elevation={5} className={classes.paper}>
         <Map />
-      </Paper>
+      </Paper> */}
       <Paper elevation={5} className={classes.paper}>
       <FeedBack />
       </Paper>
