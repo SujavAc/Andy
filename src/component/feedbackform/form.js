@@ -6,6 +6,12 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Axios from "axios";
 import Image from '../../image/feedback.jpg';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,10 +55,19 @@ export default function HalfRating() {
   });
   const [state, setState] = useState({ open: false, files: [] });
   const [msgError, setMsgError] = useState({ message: "", success: "" });
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
   const handleClose = () => {
     setState({
       open: false,
     });
+  };
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenSnackbar(false);
   };
 
   const handleSave = (files) => {
@@ -78,7 +93,8 @@ export default function HalfRating() {
     });
   };
   const handleClick = () => {
-    console.log(data);
+    setOpenSnackbar(true);
+    
     if (
       !data.photo ||
       !data.name ||
@@ -191,7 +207,13 @@ export default function HalfRating() {
         onClose={handleClose.bind(this)}
       />
       <Button onClick={handleClick} variant='contained' color='primary'>Submit</Button>
-      {msgError?(msgError.message):(msgError.success)}
+      <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+          {msgError ? (
+            <Alert onClose={handleCloseSnackbar} severity="error">{msgError.message}</Alert>
+          ) : (
+            <Alert onClose={handleCloseSnackbar} severity="success">{msgError.success}</Alert>
+          )}
+        </Snackbar>
     </form>
     //</div>
   );

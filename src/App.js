@@ -39,7 +39,7 @@ function App() {
       <BrowserRouter>
       <Switch>
       <Route exact path='/' component={Homepage} />
-      <Route exact path='/homepage' component={Homepage} />
+    <Route exact path='/homepage' component={Homepage} />
       <Route exact path='/Admin' component={Admin} />
       <Route exact path='/About Us' component={AboutUs} />
       <Route exact path='/Popular Course' component={PopularCourses} />
